@@ -1,121 +1,172 @@
 <template>
-    <ul class="carousel-indicator">
-        <li :class="{ 'carousel-indicator-current': i === currentCarouselIndex }" 
-            v-for="(c, i) in cards" 
-            :key="i"
-            @click="setCarouselCard(i)">
-        </li>
-    </ul>
-    <font-awesome-icon icon="fa-solid fa-file-code" />
-    <div v-for="(c, i) in currentCarouselCard()" :key="i" class="carousel-display">
-        <h3>{{ c.title }}</h3>
-        <p>{{ c.desc }}</p>
-    </div>
+    <div class="card-holder">
+        <div :class="['card', { 'padding-card': entry.title === '' }]" 
+             v-for="(entry, i) in portfolio" 
+             :key="i">
 
-    <!--<div class="card-holder">-->
-        <!--<Card :data="card" v-for="(card, i) in cards" :key="i"/>-->
-    <!--</div>-->
-    <!--<div>-->
-        <!--<CardInfo :data="card" v-for="(card, i) in cards" :key="i"/>-->
-    <!--</div>-->
+                <div>
+                    <div class="card-top">
+                        <font-awesome-icon :icon="['fas', 'file-lines']" />
+                        <div class="card-links">
+
+                            <a v-if="entry.demo !== null" class="icon-link" :href="entry.demo" target="_blank">
+                                <font-awesome-icon :icon="['fab', 'cube']" />
+                            </a>
+
+                            <a class="icon-link" :href="entry.github" target="_blank">
+                                <font-awesome-icon :icon="['fab', 'github']" />
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <h3 class="card-title">
+                        <a :href="entry.demo || entry.github" target="_blank">{{ entry.title }}</a>
+                    </h3>
+                    <p class="card-desc">{{ entry.desc }}</p>
+                </div>
+
+                <div>
+                    <ul class="card-tech-list">
+                       <li class="card-tech" v-for="(tech, i) in entry.technologies" :key="i">{{ tech }}</li>
+                    </ul>
+                </div>
+
+        </div> <!-- Card -->
+    </div> <!-- Holder -->
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 
-import Card, { CardInterface } from '@/components/Card.vue';
-import CardInfo from '@/components/CardInfo.vue';
+import { PortfolioEntry, portfolio } from '@/Lib';
 
 @Options({
-    components: {
-        Card,
-        CardInfo
-    },
+    components: {},
 })
 export default class PortfolioView extends Vue {
-    cards: CardInterface[] = [];
-    currentCarouselIndex = 0;
-    carouselInterval = 0;
-    runTestHeader = false;
+    portfolio: PortfolioEntry[] = portfolio;
     created() {
-        this.cards.push({
-            title: 'JESS Programming Language',
-            imgsrc: 'src',
-            desc: 'Recursive descent parser for a dynamically typed language'
-        });
-        this.cards.push({
-            title: 'gamesense.vim',
-            imgsrc: 'src',
-            desc: '(N)Vim plugin for asynchronous SteelSeries GameSense interaction'
-        });
-        this.cards.push({
-            title: 'Exam Central',
-            imgsrc: 'src',
-            desc: 'Web app for creating and taking exams'
-        });
-    }
-    mounted() {
-        this.carouselInterval = setInterval(this.nextCarouselCard, 5000);
-        setTimeout(() => {
-            this.runTestHeader = true;
-        }, 1000);
-    }
-    currentCarouselCard(): CardInterface[] {
-        return this.cards.filter((c, i) => i === this.currentCarouselIndex);
-    }
-    nextCarouselCard() {
-        if (this.currentCarouselIndex === this.cards.length - 1) {
-            this.currentCarouselIndex = 0;
-        } else {
-            this.currentCarouselIndex++;
-        }
-    }
-    setCarouselCard(i: number) {
-        this.currentCarouselIndex = i;
-        clearInterval(this.carouselInterval);
-        this.carouselInterval = setInterval(this.nextCarouselCard, 5000);
+        // Add a dummy card to allow nice flexbox behavior
+        if (this.portfolio.length % 2 !== 0)
+            this.portfolio.push({
+                title: '',
+                desc: '',
+                github: '',
+                demo: '',
+                technologies: [],
+            });
     }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
 .card-holder {
+    width: 100%;
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
-    justify-content: space-around;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-.carousel-indicator {
-    padding-left: 0;
-    display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 10px;
 }
+.card {
+    width: 40%;
+    height: 200px;
+    border-radius: 2px;
+    padding: 1em;
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: space-between;
+    box-shadow: 3px 3px var(--link-color);
+    background-color: var(--card-bg);
+    transition: transform .2s ease-in-out;
 
-.carousel-indicator li {
-    display: inline-block;
+    animation: fade-up .5s ease-out forwards;
+    opacity: 0;
+    @for $i from 0 through 2 {
+        &:nth-child(#{$i * 2 + 1}), &:nth-child(#{$i * 2 + 2}) {
+            animation-delay: #{200 + 200 * $i}ms;
+        }
+    }
+
+    &:hover {
+        transform: translateY(-6px);
+    }
+}
+@keyframes fade-up {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.card-title {
+    margin: 0px 0px 10px;
+    font-size: var(--font-xl);
+    * {
+        transition: color 0.1s linear;
+        &:hover {
+            color: green;
+        }
+    }
+}
+.card-desc {
+    /* margin: 0px 0px 10px; */
+    margin: 0px 0px 0px;
+    font-size: var(--font-sm);
+}
+.card-github { }
+.card-demo { }
+
+.card-top {
+    display: flex; 
+    justify-content: space-between;
+    font-size: 30px;
+    color: var(--link-color);
+}
+.card-links {
+    display: flex;
+    justify-content: end;
+    gap: .5rem;
+    width: 100%;
+    margin-bottom: 10px;
+    * {
+        transition: color .1s linear;
+        color: var(--link-color);
+        &:hover {
+            color: var(--link-hover-color);
+        }
+    }
+}
+
+.card-tech-list {
+    padding: 0;
+    margin: 0;
+    gap: 1em;
     list-style-type: none;
-    width: 35px;
-    height: 8px;
-    border: 2px solid black;
-    border-radius: 4px;
-    transition: background-color 0.3s linear;
+    display: flex;
+    font-family: 'SF Mono';
+}
+.card-tech {
+    display: inline;
+    color: var(--link-color);
+    font-size: var(--font-sm);
+}
+.padding-card {
+    opacity: 0;
 }
 
-.carousel-indicator-current {
-    background-color: black;
+a { 
+    text-decoration: none; 
+    color: inherit;
+    &:visited {
+        color: inherit; 
+    }
 }
 
-.carousel-display {
-    border: 2px solid black;
-    border-radius: 4px;
-    height: 300px;
-    width: 80%;
-    margin-bottom: 16px;
-    margin-right: auto;
-    margin-left: auto;
+/* Icons surrounded by anchor tags causes a bit of
+   shifting in vertical alignment. This removes it. */
+* {
+    vertical-align: 0; 
 }
 
 .fade-leave-from { opacity: 1; }

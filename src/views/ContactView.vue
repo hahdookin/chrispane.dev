@@ -1,34 +1,47 @@
 <template>
   <div>
-    <!--<p>Here is how to contact me.</p>-->
     <ul>
-        <!--<li v-for="(v, k, i) in socials" :key="i">-->
-            <!--{{ k }}: {{ v }}-->
-        <!--</li>-->
-        <li>email: <a href="mailto: ChrisPaneCS@gmail.com">ChrisPaneCS@gmail.com</a></li>
-        <li>discord: Chris pane#9774</li>
-
+        <li><font-awesome-icon :icon="['fa', 'envelope']" /> <a :href="`mailto:${contact.email}`">{{ contact.email }}</a></li>
+        <li><font-awesome-icon :icon="['fab', 'discord']" /> {{ contact.discord }}</li>
     </ul>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+import { contact } from '@/Lib';
 
 export default class ContactView extends Vue {
-    socials = {
-        'email': 'ChrisPaneCS@gmail.com',
-        'discord': 'Chris pane#9774',
-    };
+    contact = contact;
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+a {
+    text-decoration: none;
+    color: inherit;
+}
 ul {
     list-style-type: none;
-    padding: 0;
+    padding: 10px 0;
     margin: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
+}
+li {
+    animation: slide-up .5s ease-out forwards;
+    opacity: 0;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    /* width: 40%; */
+    /* margin: auto; */
+}
+@for $i from 1 through 2 {
+    li:nth-child(#{$i}) {
+        animation-delay: #{($i - 1) * 200}ms;
+    }
+}
+@keyframes slide-up {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 </style>

@@ -1,55 +1,3 @@
-enum TreePart {
-    Trunk, Branch, Leaf
-}
-
-function strMap(tp: TreePart): string {
-    switch (tp) {
-        case TreePart.Trunk:
-            return 'T';
-        case TreePart.Branch:
-            return 'B';
-        case TreePart.Leaf:
-            return 'L';
-    }
-}
-
-class Node {
-    children: Node[];
-    value: TreePart;
-    constructor(v: TreePart) {
-        this.children = [];
-        this.value = v;
-    }
-    add(node: Node) {
-        this.children.push(node);
-    }
-    print(indent: string, last: boolean) {
-        let printFmt = "";
-        printFmt += indent;
-        if (last) {
-            printFmt += '\\-';
-            indent += '  ';
-        } else {
-            printFmt += '|-';
-            indent += '| ';
-        }
-        printFmt += strMap(this.value);
-        console.log(printFmt);
-        for (let i = 0; i < this.children.length; i++) 
-            this.children[i].print(indent, i == this.children.length - 1);
-    }
-}
-
-class Tree {
-    root: Node;
-    constructor(rootVal: TreePart) {
-        this.root = new Node(rootVal);
-    }
-    print() {
-        this.root.print("", true);
-    }
-}
-
 export function randBetween(n1: number, n2: number): number {
     const lower = Math.min(n1, n2);
     const upper = Math.max(n1, n2);
@@ -57,15 +5,69 @@ export function randBetween(n1: number, n2: number): number {
     return Math.random() * diff + lower;
 }
 
-export const tree = new Tree(TreePart.Trunk);
-tree.root.add(new Node(TreePart.Trunk));
-tree.root.children[0].add(new Node(TreePart.Branch));
-tree.root.children[0].add(new Node(TreePart.Branch));
-tree.root.children[0].add(new Node(TreePart.Branch));
-tree.root.children[0].children[0].add(new Node(TreePart.Leaf));
-tree.root.children[0].children[0].add(new Node(TreePart.Leaf));
-tree.root.children[0].children[1].add(new Node(TreePart.Leaf));
-tree.root.children[0].children[1].add(new Node(TreePart.Leaf));
-tree.root.children[0].children[2].add(new Node(TreePart.Leaf));
-tree.root.children[0].children[2].add(new Node(TreePart.Leaf));
+export const socials = {
+    'github': 'https://github.com/hahdookin',
+    'linkedin': 'https://www.linkedin.com/in/christopher-pane/',
+    'twitter': 'https://twitter.com/chrispane_',
+    'youtube': 'https://www.youtube.com/channel/UCkpkIHMJ2c3eTPzlzdC7E3A?app=desktop',
+    'tiktok': 'https://www.tiktok.com/@chrispane100000',
+};
 
+export const contact = {
+    'email': 'ChrisPaneCS@gmail.com',
+    'discord': 'Chris pane#9774',
+};
+
+export interface PortfolioEntry {
+    title: string;
+    desc: string;
+    github: string;
+    demo: string | null;
+    technologies: string[];
+}
+const githubURL = 'https://github.com/hahdookin';
+const baseURL = 'https://chrispane.dev';
+export const portfolio: PortfolioEntry[] = [
+    {
+        title: 'JESS Programming Language',
+        desc: 'Recursive descent parser and feature-rich REPL in the browser',
+        github: `${githubURL}/hahdookin.github.io`,
+        demo: `${baseURL}/jess`,
+        technologies: ['JavaScript', 'HTML', 'CSS']
+    },
+    {
+        title: 'Image Filter App',
+        desc: 'Web app for applying filters to an image through kernel convolution',
+        github: `${githubURL}/ImageFilterApp`,
+        demo: 'http://ImageFilterApp.surge.sh',
+        technologies: ['JavaScript', 'ThreeJS', 'GLSL']
+    },
+    {
+        title: 'Exam Central',
+        desc: 'Web app for creating, taking, and grading exams',
+        github: `${githubURL}/cs490`,
+        demo: 'http://exam-central.surge.sh',
+        technologies: ['Vue 3', 'NodeJS', 'Go']
+    },
+    {
+        title: 'gamesense.vim',
+        desc: '(N)Vim plugin for asynchronous SteelSeries GameSense interaction',
+        github: `${githubURL}/gamesense.vim`,
+        demo: null,
+        technologies: ['NodeJS', 'VimL']
+    },
+    {
+        title: 'Scrollsay',
+        desc: 'Generates an ASCII art scroll with a message in the terminal',
+        github: `${githubURL}/Scrollsay`,
+        demo: null,
+        technologies: ['C++']
+    },
+    {
+        title: 'Bruhbot',
+        desc: 'Discord bot. My first programming project.',
+        github: '',
+        demo: null,
+        technologies: ['Python', 'Discord API']
+    }
+];

@@ -1,19 +1,19 @@
 <template>
-<span></span>
+    <LinkIcons />
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import NavBar from '@/components/NavBar.vue'
+import HomeAnim from '@/components/HomeAnim.vue';
+import LinkIcons from '@/components/LinkIcons.vue';
 
 @Options({
-  components: {
-    NavBar
-  },
+    components: {
+        HomeAnim,
+        LinkIcons
+    },
 })
-export default class HomeView extends Vue {
-    content = "Hello there!";
-}
+export default class HomeView extends Vue {}
 </script>
 
 <style scoped>
