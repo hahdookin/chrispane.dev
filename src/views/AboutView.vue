@@ -2,7 +2,8 @@
     <div class="about-me">
         <div class="about-me-desc">
             <p>Hi, I'm <span class="about-name">Chris Pane</span>, software developer and computer science student at NJIT.</p>
-            <p>I enjoy web-dev, full-stack, 3D modeling, game development, and iced coffee.</p>
+            <!--<p>I enjoy web-dev, full-stack, 3D modeling, game development, and iced coffee.</p>-->
+            <p>I'm usually doing web-dev, game-dev, 3D modelling, or tweaking my <a target="_blank" :href="vimrc_url" class="text-link">vimrc</a>.</p>
         </div>
         <img width="330" :src="require('@/assets/cropped2.jpg')" alt="Coco!" />
     </div>
@@ -11,7 +12,9 @@
 <script>
 import { Options, Vue } from 'vue-class-component';
 
-export default class AboutView extends Vue {}
+export default class AboutView extends Vue {
+    vimrc_url = "https://github.com/hahdookin/ArchConfigs/blob/main/nvim/init.vim";
+}
 </script>
 
 <style scoped lang="scss">

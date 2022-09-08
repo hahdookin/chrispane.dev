@@ -1,7 +1,7 @@
 <template>
     <div class="card-holder">
         <div :class="['card', { 'padding-card': entry.title === '' }]" 
-             v-for="(entry, i) in portfolio" 
+             v-for="(entry, i) in display_portfolio" 
              :key="i">
 
                 <div>
@@ -45,10 +45,13 @@ import { PortfolioEntry, portfolio } from '@/Lib';
     components: {},
 })
 export default class PortfolioView extends Vue {
+    max_entries = 6;
     portfolio: PortfolioEntry[] = portfolio;
-    created() {
-        // Add a dummy card to allow nice flexbox behavior
+
+    get display_portfolio(): PortfolioEntry[] {
+        const res = this.portfolio.slice(0, this.max_entries);
         if (this.portfolio.length % 2 !== 0)
+            // Push a dummy entry that will be hidden, helps the flex layout
             this.portfolio.push({
                 title: '',
                 desc: '',
@@ -56,6 +59,7 @@ export default class PortfolioView extends Vue {
                 demo: '',
                 technologies: [],
             });
+        return res;
     }
 }
 </script>
