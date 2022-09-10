@@ -46,7 +46,7 @@ export const portfolio: PortfolioEntry[] = [
         technologies: ['Vim9script']
     },
     {
-        title: 'JESS Programming Language',
+        title: 'JESS REPL',
         desc: 'Recursive descent parser and feature-rich REPL in the browser',
         github: `${githubURL}/hahdookin.github.io`,
         demo: `${baseURL}/jess`,
@@ -68,10 +68,10 @@ export const portfolio: PortfolioEntry[] = [
     },
     {
         title: 'chrispane.dev',
-        desc: '',
+        desc: 'Deceptively simple and responsive portfolio SPA website',
         github: `${githubURL}/chirspane.dev`,
-        demo: null,
-        technologies: ['Vue3', 'TypeScript']
+        demo: `${baseURL}`,
+        technologies: ['Vue3', 'TypeScript', 'SCSS']
     },
     {
         title: 'Exam Central',

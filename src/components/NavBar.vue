@@ -22,7 +22,7 @@ export default class NavBar extends Vue {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 @keyframes navbar-slide-in {
     from { opacity: 0; transform: translateY(30px); }
@@ -33,11 +33,10 @@ export default class NavBar extends Vue {
     opacity: 0;
     animation: navbar-slide-in 1s;
     animation-fill-mode: forwards;
+    @for $i from 1 through 4 {
+        &:nth-child(#{$i}) { animation-delay: calc(500ms + #{200 * $i}ms); }
+    }
 }
-.my-anim:nth-child(1) { animation-delay: calc(500ms + 100ms); }
-.my-anim:nth-child(2) { animation-delay: calc(500ms + 300ms); }
-.my-anim:nth-child(3) { animation-delay: calc(500ms + 500ms); }
-.my-anim:nth-child(4) { animation-delay: calc(500ms + 700ms); }
 
 ul {
     padding: 0;
@@ -53,49 +52,25 @@ ul {
 li {
     display: inline-block;
     list-style-type: none;
-    /* padding-left: 10px; */
-    /* padding-right: 10px; */
     font-size: 18px;
 }
 
-a::after {
-    content: '';
-    position: absolute;
-    height: .05em;
-    width: 0;
-    left: 0;
-    bottom: 0;
-    background-color: var(--link-hover-color);
-    border-radius: 5px;
-    transition: width .2s ease-out;
-}
-
-a:hover::after {
-    width: 100%;
-}
-
 a {
-    text-decoration: none;
-    color: var(--link-color);
-    transition: color .1s linear;
+    @include underline-link($link-color, $link-hover-color);
 }
-a:hover {
-    color: var(--link-hover-color);
-}
-a:visited { }
-a:active { }
 
 .selected {
-    color: var(--link-hover-color);
+    color: $link-hover-color;
 }
 .resume:hover {
-    color: var(--special-fg);
+    color: $special-fg;
 }
 .resume-link::after {
+    @include media(xs) { opacity: 0; }
     content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg viewBox='0 0 512 512' fill='hwb(237deg 44% 36%)' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 234.5 5.709 C 248.4 0.738 263.6 0.738 277.5 5.709 L 469.5 74.28 C 494.1 83.38 512 107.5 512 134.6 L 512 377.4 C 512 404.5 494.1 428.6 469.5 437.7 L 277.5 506.3 C 263.6 511.3 248.4 511.3 234.5 506.3 L 42.47 437.7 C 17 428.6 0 404.5 0 377.4 L 0 134.6 C 0 107.5 17 83.38 42.47 74.28 L 234.5 5.709 Z M 82.34 128 L 256 190 L 82.34 128 Z M 32.666 391.913 L 237.386 465.86 L 238.164 226.891 L 33.445 153.723 L 32.666 391.913 Z M 276.246 466.347 L 480.965 393.179 L 480.187 154.21 L 275.467 228.157 L 276.246 466.347 Z M 466.543 116.316 L 252.758 38.947 L 42.027 116.316 L 254.795 192.668 L 466.543 116.316 Z'/%3E%3C/svg%3E%0A");
     margin-left: .5em;
     position: absolute;
     display: inline-block;
-    width: var(--font-xl);
+    width: $font-xl;
 }
 </style>

@@ -34,7 +34,7 @@ $gap: 3px;
     div {
         width: $width;
         height: $height;
-        background-color: var(--fg);
+        background-color: $fg;
         animation: r 1s $google-ease forwards;
         animation-iteration-count: infinite;
     }

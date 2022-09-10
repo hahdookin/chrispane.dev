@@ -22,26 +22,20 @@ a {
     color: inherit;
 }
 ul {
+    display: flex;
+    flex-direction: column;
     list-style-type: none;
     padding: 10px 0;
     margin: 0;
 }
 li {
+    @include slide-up-anim(slide-up, 6px);
     animation: slide-up .5s ease-out forwards;
     opacity: 0;
-    /* display: flex; */
-    /* justify-content: space-between; */
-    /* align-items: center; */
-    /* width: 40%; */
-    /* margin: auto; */
 }
 @for $i from 1 through 2 {
     li:nth-child(#{$i}) {
         animation-delay: #{($i - 1) * 200}ms;
     }
-}
-@keyframes slide-up {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 </style>

@@ -70,6 +70,7 @@ export default class PortfolioView extends Vue {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-evenly;
     gap: 10px;
 }
@@ -83,8 +84,8 @@ export default class PortfolioView extends Vue {
     flex-direction: column;
     text-align: left;
     justify-content: space-between;
-    box-shadow: 3px 3px var(--link-color);
-    background-color: var(--card-bg);
+    box-shadow: 3px 3px $link-color;
+    background-color: $card-bg;
     transition: transform .2s ease-in-out;
 
     animation: fade-up .5s ease-out forwards;
@@ -105,7 +106,7 @@ export default class PortfolioView extends Vue {
 }
 .card-title {
     margin: 0px 0px 10px;
-    font-size: var(--font-xl);
+    font-size: $font-xl;
     * {
         transition: color 0.1s linear;
         &:hover {
@@ -116,7 +117,7 @@ export default class PortfolioView extends Vue {
 .card-desc {
     /* margin: 0px 0px 10px; */
     margin: 0px 0px 0px;
-    font-size: var(--font-sm);
+    font-size: $font-sm;
 }
 .card-github { }
 .card-demo { }
@@ -125,7 +126,7 @@ export default class PortfolioView extends Vue {
     display: flex; 
     justify-content: space-between;
     font-size: 30px;
-    color: var(--link-color);
+    color: $link-color;
 }
 .card-links {
     display: flex;
@@ -135,9 +136,9 @@ export default class PortfolioView extends Vue {
     margin-bottom: 10px;
     * {
         transition: color .1s linear;
-        color: var(--link-color);
+        color: $link-color;
         &:hover {
-            color: var(--link-hover-color);
+            color: $link-hover-color;
         }
     }
 }
@@ -152,8 +153,8 @@ export default class PortfolioView extends Vue {
 }
 .card-tech {
     display: inline;
-    color: var(--link-color);
-    font-size: var(--font-sm);
+    color: $link-color;
+    font-size: $font-sm;
 }
 .padding-card {
     opacity: 0;

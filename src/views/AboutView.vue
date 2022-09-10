@@ -5,7 +5,7 @@
             <!--<p>I enjoy web-dev, full-stack, 3D modeling, game development, and iced coffee.</p>-->
             <p>I'm usually doing web-dev, game-dev, 3D modelling, or tweaking my <a target="_blank" :href="vimrc_url" class="text-link">vimrc</a>.</p>
         </div>
-        <img width="330" :src="require('@/assets/cropped2.jpg')" alt="Coco!" />
+        <img width="330" :src="require('@/assets/headshot.jpg')" alt="Coco!" />
     </div>
 </template>
 
@@ -18,15 +18,24 @@ export default class AboutView extends Vue {
 </script>
 
 <style scoped lang="scss">
+/* @include keyframes(slide-up) { */
+/*     from { opacity: 0; transform: translateY(20px); } */
+/*     to { opacity: 1; transform: translateY(0px); } */
+/* } */
+@include slide-up-anim(slide-up, 20px)
+.text-link {
+    @include underline-link($link-hover-color, $special-fg);
+}
 .about-me {
     display: flex;
     align-items: center;
     align-content: center;
-    font-size: var(--font-xl);
-    @media screen and (max-width: 600px) {
-        flex-direction: column-reverse;
-    }
+    font-size: $font-xl;
+    @include media(xs, sm) { flex-direction: column-reverse; }
+    @include media(md) { flex-direction: row; }
     img {
+        @include media(xs, sm) { width: 60vw; }
+        @include media(md) { width: 330px; }
         animation: slide-up .5s ease-out forwards;
         animation-delay: 0ms;
     }
@@ -34,28 +43,24 @@ export default class AboutView extends Vue {
 .about-me-desc {
     padding: 1em;
     text-align: left;
-    color: var(--sub-fg);
-    @media screen and (max-width: 600px) {
-        text-align: center;
-    }
+    color: $sub-fg;
+    /* @media screen and (max-width: 600px) { */
+    /*     text-align: center; */
+    /* } */
+    @include media(xs) { text-align: center; }
     p {
         opacity: 0;
         animation: slide-up .5s ease-out forwards;
-        &:nth-child(1) {
-            animation-delay: 200ms;
-        }
-        &:nth-child(2) {
-            animation-delay: 400ms;
+        @for $i from 1 through 2 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{$i * 200}ms;
+            }
         }
     }
+
 }
 .about-name {
-    color: var(--fg);
+    color: $fg;
     font-weight: bold;
-}
-
-@keyframes slide-up {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 </style>

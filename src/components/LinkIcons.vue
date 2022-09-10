@@ -24,11 +24,21 @@ div {
     display: flex;
     justify-content: center;
     gap: 30px;
-    font-size: 30px;
+    @include media(xs) {
+        flex-direction: column;
+        font-size: 60px;
+    }
+    @include media(sm) {
+        font-size: 50px;
+        flex-direction: row;
+    }
+    @include media(md) {
+        font-size: 30px;
+    }
 }
 
 a {
-    color: var(--link-color);
+    color: $link-color;
     transition: all .1s linear;
     /* Move link up */
     &:hover {
@@ -37,21 +47,16 @@ a {
     }
     /* Recolor link's icon */
     & > *:hover {
-        color: var(--link-hover-color);
+        color: $link-hover-color;
         transition: color .1s linear;
     }
-    &:visited { color: var(--link-color); }
-    &:active { color: var(--link-color); }
+    &:visited { color: $link-color; }
+    &:active { color: $link-color; }
 }
 
-@keyframes fade-in {
+@include keyframes(fade-in) {
     from { opacity: 0; }
     to { opacity: 1; }
-}
-
-@keyframes slide-down {
-    from { opacity: 1; transform: translateY(0); }
-    to { opacity: 0; transform: translateY(6px); }
 }
 
 .fade-in-anim {

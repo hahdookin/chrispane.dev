@@ -18,6 +18,8 @@ export default class Footer extends Vue {}
 
 <style scoped lang="scss">
 .footer {
+    @include media(xs) { visibility: hidden; }
+    @include media(sm) { visibility: visible; }
     position: fixed;
     bottom: 0;
     left: 50%;

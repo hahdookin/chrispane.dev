@@ -1,0 +1,56 @@
+@import "globals";
+
+// Mixin for links that get an underline transition when hovered
+// Params: 
+//   $color: color of item when not hovered
+//   $hover_color: color of item when hovered
+//   $hover_underline_color: color of underline that shows when hovered, default is hover color
+@mixin underline-link($color, $hover_color, $hover_underline_color: $hover_color) {
+    text-decoration: none;
+    color: $color;
+    transition: color .1s linear;
+    &:after {
+        content: '';
+        position: absolute;
+        height: .05em;
+        width: 0;
+        left: 0;
+        bottom: 0;
+        background-color: $hover_underline_color;
+        border-radius: 5px;
+        transition: width .2s ease-out;
+    }
+    &:hover {
+        // color: var(--link-hover-color);
+        color: $hover_color;
+        &:after { /* Targets the after element of the anchor tag while hovering */
+            width: 100%;
+        }
+    }
+    &:visited { }
+    &:active { }
+}
+
+@mixin keyframes($name) {
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+// Mixin to create a "slide-up fade-in" animation
+// Params:
+//   $y: Starting y position of before the slide-in
+@mixin slide-up-anim($name, $y) {
+    @include keyframes($name) {
+        from { opacity: 0; transform: translateY($y); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+}
+
+@mixin font-setup($family, $size, $color, $weight: normal, $fallback: sans-serif) {
+    font-family: $family, $fallback;
+    font-size: $size;
+    color: $color;
+}
+
+

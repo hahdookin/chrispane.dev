@@ -56,11 +56,12 @@ export default class App extends Vue {
 }
 </script>
 
-<style>
+<style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 @import url('https://fonts.cdnfonts.com/css/sf-mono');
 @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -72,47 +73,15 @@ export default class App extends Vue {
 .route-leave-active { transition: all 0.3s; }
 .route-leave-to { opacity: 0; }
 
-:root {
-    --font-xxs: 12px;
-    --font-xs: 13px;
-    --font-sm: 14px;
-    --font-md: 16px;
-    --font-lg: 18px;
-    --font-xl: 20px;
-    --font-xxl: 22px;
-    --font-header: 48px;
-
-    /* --bg: #FFFDDE; */
-    /* --bg: #eee; */
-    /* --bg: #fff; */
-    /* --bg: #0d1821; */
-    /* --fg: #2c3e50; */
-    /* --fg: #1E2022; */
-    /* --fg: rgb(75, 76, 77); */
-    /* --fg: #DCE9F4; */
-    /* --color4: #52616B; */
-    /* --link-color: orange; */
-    /* --link-hover-color: red; */
-    --bg: #fff;
-    --fg: #413d45;
-    --content-bg: #eee;
-    --card-bg: #ddd;
-    --link-color: #777;
-    --link-hover-color: var(--fg);
-
-    --bg: hwb(233deg 11% 78%);
-    --fg: hwb(237deg 81% 9%);
-    --link-color: hwb(237deg 44% 36%);
-    --sub-fg: var(--link-color);
-    --special-fg: orange;
-    --card-bg: var(--bg);
-    --content-bg: hwb(233deg 6% 85%);
-}
-
 body { 
     margin: 0; 
     padding: 0; 
-    background-color: var(--bg);
+    background-color: $bg;
+    /* @include xs { background: white; } */
+    /* @include media(sm) { background: red; } */
+    /* @include media(md) { background: pink; } */
+    /* @include media(lg) { background: yellow; } */
+    /* @include media(xl) { background: green; } */
 } 
 
 /* BG MAIN SUB */
@@ -123,14 +92,14 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: var(--fg);
-    font-size: var(--font-lg);
+    color: $fg;
+    font-size: $font-lg;
 }
 
 /* Make link look like normal text */
 .text-link {
     text-decoration: none;
-    color: var(--fg);
+    color: $fg;
 }
 .text-link:hover { }
 .text-link:visited { }
@@ -151,6 +120,8 @@ body {
 }
 
 .content {
+    @include media(xs) { width: auto; }
+    @include media(sm) { width: 80vw; }
     position: absolute;
     /* border: 4px solid var(--color4); */
     /* border-radius: 15px; */
@@ -164,8 +135,8 @@ body {
     max-width: 800px;
     padding: 1em;
     margin-top: 1em;
-    background-color: var(--content-bg);
-    box-shadow: 3px 3px var(--link-color);
+    background-color: $content-bg;
+    box-shadow: 3px 3px $link-color;
 }
 
 .home-content {
@@ -176,16 +147,15 @@ body {
 
 /* Header styling */
 .name {
+    @include media(xs) {
+        font-size: $font-header + 10;
+    }
     margin: 0;
-    font-size: var(--font-header);
+    font-size: $font-header;
     font-weight: bold;
     animation: header-slide-up 1.0s ease-out;
 }
 
-@keyframes header-slide-up {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
+@include slide-up-anim(header-slide-up, 20px);
 
 </style>
