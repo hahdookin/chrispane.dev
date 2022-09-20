@@ -47,7 +47,10 @@ export default class AboutView extends Vue {
     /* @media screen and (max-width: 600px) { */
     /*     text-align: center; */
     /* } */
-    @include media(xs) { text-align: center; }
+    @include media(xs) { 
+        text-align: center; 
+        font-size: $font-md;
+    }
     p {
         opacity: 0;
         animation: slide-up .5s ease-out forwards;

@@ -26,7 +26,7 @@ div {
     gap: 30px;
     @include media(xs) {
         flex-direction: column;
-        font-size: 60px;
+        font-size: 6vh;
     }
     @include media(sm) {
         font-size: 50px;
