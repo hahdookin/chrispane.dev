@@ -1,4 +1,11 @@
 @import "globals";
+@import "sf-ui";
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+
 
 // Mixin for links that get an underline transition when hovered
 // Params: 
@@ -27,8 +34,6 @@
             width: 100%;
         }
     }
-    &:visited { }
-    &:active { }
 }
 
 @mixin keyframes($name) {
@@ -46,11 +51,58 @@
         to { opacity: 1; transform: translateY(0); }
     }
 }
-
-@mixin font-setup($family, $size, $color, $weight: normal, $fallback: sans-serif) {
-    font-family: $family, $fallback;
-    font-size: $size;
-    color: $color;
+@mixin slide-side-anim($name, $x) {
+    @include keyframes($name) {
+        from { opacity: 0; transform: translateX($x); }
+        to { opacity: 1; transform: translateX(0); }
+    }
 }
 
+@mixin font-setup($family, $weight: normal, $fallback: sans-serif) {
+    font-family: $family, $fallback;
+    font-style: normal;
+    font-weight: $weight;
+}
 
+// @include font-setup(Merriweather, 700);
+
+@mixin text-color-gradient($grad) {
+    background: $grad;
+    background-clip: text;
+    color: transparent;
+}
+
+@mixin card-mixin {
+    background-color: $bg2;
+    border-radius: 14px;
+}
+
+@mixin dotted-background($size, $spacing, $color1, $color2) {
+    position: absolute;
+    background: repeating-linear-gradient(0deg, transparent, transparent $size, $color1 $size, $color1 $spacing), repeating-linear-gradient(-90deg, $color2, $color2 $size, $color1 $size, $color1 $spacing);
+
+}
+
+// Scrollbar
+// Width
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+// Allows transparent scollbar
+body { overflow: overlay; }
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $bg3;
+    border-radius: 20px;
+    // &:hover {
+    //     background: grey;
+    // }
+    // &:active {
+    //     background: lightgrey;
+    // }
+    transition: background .2s ease;
+}
