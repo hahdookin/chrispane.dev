@@ -35,7 +35,10 @@ export default class AboutSection extends Vue {
 <style lang="scss" scoped>
 
 section {
+    @include media(sm) {
+    }
     width: 60%;
+    min-width: 900px;
     /* margin: auto; */
     @include card-mixin;
     padding: 30px 0;
