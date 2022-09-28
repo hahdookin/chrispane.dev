@@ -17,7 +17,7 @@
                                 <h1><a target="_blank" :href="e.entry.demo">{{ e.entry.title }}</a></h1>
                                 <span>FEATURED</span>
                             </div>
-                            <h3>{{ e.shortDesc }}</h3>
+                            <h3>{{ e.genre }}</h3>
                         </div>
                         <p>{{ e.entry.desc }}</p>
                     </div>
@@ -41,7 +41,7 @@ import { portfolio, PortfolioEntry } from '@/Lib';
 
 interface MainPortfolioEntry {
     entry: PortfolioEntry;
-    shortDesc: string;
+    genre: string;
     imgURL: string;
 }
 @Options({
@@ -56,18 +56,18 @@ export default class PortfolioSection extends Vue {
         this.main_sellers = [
             {
                 entry: portfolio.find((e) => e.title === 'miniterm.vim') as PortfolioEntry,
-                shortDesc: 'VIM PLUGIN',
-                imgURL: require('@/assets/miniterm.gif'),
+                genre: 'VIM PLUGIN',
+                imgURL: require('@/assets/img/portfolio/miniterm.gif'),
             },
             {
                 entry: portfolio.find((e) => e.title === 'CG Museum') as PortfolioEntry,
-                shortDesc: '3D GRAPHICS',
-                imgURL: require('@/assets/cgmuseum.png'),
+                genre: '3D GRAPHICS',
+                imgURL: require('@/assets/img/portfolio/cgmuseum.png'),
             },
             {
                 entry: portfolio.find((e) => e.title === 'JESS REPL') as PortfolioEntry,
-                shortDesc: 'WEB DEVELOPMENT',
-                imgURL: require('@/assets/jessrepl.png'),
+                genre: 'WEB DEVELOPMENT',
+                imgURL: require('@/assets/img/portfolio/jessrepl.png'),
             },
         ];
     }

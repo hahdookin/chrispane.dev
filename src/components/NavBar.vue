@@ -9,9 +9,6 @@
             <div class="popup-wrapper">
                 <PopupMenu />
             </div>
-            <!--<div v-show="!mainCubeVisible" style="position: fixed; top: 20px;">-->
-                <!--<CubeSVG />-->
-            <!--</div>-->
         </nav>
     </header>
 </template>
@@ -19,7 +16,6 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 import PopupMenu from '@/components/PopupMenu.vue';
-/* import { Watch } from 'vue-property-decorator'; */
 
 @Options({
     components: {

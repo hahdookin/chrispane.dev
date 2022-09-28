@@ -1,15 +1,14 @@
 <template>
     <section id="about">
-        <!--<h1>About me.</h1>-->
         <div class="two-column">
             <div class="img-wrapper">
-                <img id="headshot" :src="require('@/assets/headshot.jpg')" alt="Coco!" />
+                <img id="headshot" :src="require('@/assets/img/headshot.jpg')" alt="Coco!" />
             </div>
             <div class="desc-wrapper">
                 <h1>Hi there.</h1>
-                <p>I'm a software developer and computer science student at NJIT. Hi, I'm Chris Pane, software developer and computer science student at NJIT.</p>
-                <p>I'm a software engineer slowly finding a love and appreciation for technical art, as well as beginning to understand this concept of UI/UX.</p>
-                <p>Hi, I'm Chris Pane, software developer and computer science student at NJIT. Hi, I'm Chris Pane, software developer and computer science student at NJIT.</p>
+                <p>I began programming in the Fall of 2019 and instantly fell in love. Since then, I've been always trying to get better and learn new technologies.</p>
+                <p>Currently, I'm finishing my final semester at NJIT. I have the opprotunity to work with companies and peers to make great software.</p>
+                <p>My current interests are full-stack web-dev, game-dev, UI/UX, 3D modelling, and computer graphics. But I'm usually just tweaking my <a target="_blank" :href="vimrc_url">vimrc</a>.</p>
             </div>
         </div>
     </section>
@@ -19,6 +18,7 @@
 
 @Options({})
 export default class AboutSection extends Vue {
+    vimrc_url = "https://github.com/hahdookin/ArchConfigs/blob/main/nvim/init.vim";
     mounted() {
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -33,6 +33,10 @@ export default class AboutSection extends Vue {
 </script>
 
 <style lang="scss" scoped>
+
+a {
+    @include inline-link;
+}
 
 section {
     width: 90%;
@@ -108,6 +112,7 @@ $border-offset-y: 5%;
             transform: translate($border-offset-x / 4, $border-offset-y / 4);
         }
     }
+    /* Img square border */
     &::before {
         content: '';
         position: absolute;
@@ -118,6 +123,7 @@ $border-offset-y: 5%;
         bottom: -1 * $border-offset-y;
         z-index: 0;
     }
+    /* Img dotted bg */
     &::after {
         content: '';
         position: absolute;
@@ -132,7 +138,7 @@ $border-offset-y: 5%;
 
 @keyframes scale-up {
     0% {
-        transform: scale(0);
+        transform: scale(0.7);
     }
     100% {
         transform: scale(1);

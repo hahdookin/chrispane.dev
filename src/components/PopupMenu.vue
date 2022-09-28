@@ -10,7 +10,7 @@
         <div :class="['popup-menu', {'popup-menu-visible': menuOpen}]">
             <div class="column">
                 <span class="column-title">Docs/</span>
-                <a target="_blank" :href="`${publicPath}/Christopher_Pane_Resume.pdf`">Resume</a>
+                <a target="_blank" :href="`${publicPath}Christopher_Pane_Resume.pdf`">Resume</a>
             </div>
 
             <div class="column">
@@ -24,13 +24,13 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { Vue } from 'vue-class-component';
 import { socials } from '@/Lib';
-/* import { Watch } from 'vue-property-decorator'; */
 
 export default class PopupMenu extends Vue {
     socials = socials;
     menuOpen = false;
+    publicPath = process.env.BASE_URL;
 }
 </script>
 

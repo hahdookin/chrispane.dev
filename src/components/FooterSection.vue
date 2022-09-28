@@ -3,6 +3,7 @@
         <div class="footer-container">
 
             <div class="upper">
+                <!-- TODO: Replace these with table tags -->
                 <div>
                     <span>Contact Info</span>
                     <ul>
@@ -15,7 +16,7 @@
                     <span>Docs</span>
                     <ul>
                         <li>
-                            <a target="_blank" :href="`${publicPath}/Christopher_Pane_Resume.pdf`">Resume</a>
+                            <a target="_blank" :href="`${publicPath}Christopher_Pane_Resume.pdf`">Resume</a>
                         </li>
                     </ul>
                 </div>
@@ -48,6 +49,7 @@ import { socials, contact } from '@/Lib';
 export default class FooterSection extends Vue {
     socials = socials;
     contact = contact;
+    publicPath = process.env.BASE_URL;
 }
 </script>
 

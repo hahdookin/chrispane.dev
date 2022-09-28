@@ -1,8 +1,8 @@
 <template>
     <div>
-        <img id="computer" :src="require('@/assets/computer/computer.png')">
-        <img id="monitor" :src="require('@/assets/computer/monitor.png')">
-        <img id="keyboard" :src="require('@/assets/computer/keyboard.png')">
+        <img id="computer" :src="require('@/assets/img/computer/computer.png')">
+        <img id="monitor" :src="require('@/assets/img/computer/monitor.png')">
+        <img id="keyboard" :src="require('@/assets/img/computer/keyboard.png')">
     </div>
 </template>
 

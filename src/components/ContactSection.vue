@@ -1,8 +1,6 @@
 <template>
     <section id="contact">
         <div class="content">
-            <!--<h1>Lorem ipsum.</h1>-->
-            <!--<h3>Sub-title Lorem Ipsum</h3>-->
             <p>Feel free to shoot me an email with an opportunity, or just to say hi, and I'll try to get back to you as soon as possible.</p>
             <a :href="'mailto:' + contact.email">
                 <EnvelopeSVG />
