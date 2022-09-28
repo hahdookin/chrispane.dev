@@ -2,15 +2,13 @@
     <section id="portfolio">
 
         <div class="header">
+            <CubestormSVG />
             <h1>My <br>work.</h1>
-            <div class="anim-wrapper">
-                <CubestormSVG />
-            </div>
         </div>
 
         <div class="main-deck">
             <div :class="['main-card', {'main-card-flipped': i % 2 === 1}]" v-for="(e, i) in main_sellers" :key="i">
-                <div class="image-wrapper"><a :href="e.entry.github"><img :src="e.imgURL"></a></div>
+                <div class="image-wrapper"><a target="_blank" :href="e.entry.github"><img :src="e.imgURL"></a></div>
 
                 <div class="entry-wrapper">
                     <div class="upper">
@@ -67,9 +65,9 @@ export default class PortfolioSection extends Vue {
                 imgURL: require('@/assets/cgmuseum.png'),
             },
             {
-                entry: portfolio.find((e) => e.title === 'chrispane.dev') as PortfolioEntry,
+                entry: portfolio.find((e) => e.title === 'JESS REPL') as PortfolioEntry,
                 shortDesc: 'WEB DEVELOPMENT',
-                imgURL: require('@/assets/miniterm.gif'),
+                imgURL: require('@/assets/jessrepl.png'),
             },
         ];
     }
@@ -97,19 +95,14 @@ $card-shadow: 4px 4px 20px black;
 }
 
 .main-card {
-    /* @include card-mixin; */
-    /* background-color: orange; */
     position: relative;
-    /* border: 1px solid orange; */
-    /* width: 80%; */
-    margin: auto;
     padding: 1em 0;
     display: flex;
     flex-direction: column;
     @include media(sm, md, lg, xl) {
         flex-direction: row;
     }
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     text-align: left;
     * {
@@ -131,6 +124,7 @@ $card-shadow: 4px 4px 20px black;
             width: 100%;
             @include media(sm, md, lg, xl) {
                 width: 40vw;
+                min-width: 600px;
             }
         }
     }
@@ -144,8 +138,10 @@ $card-shadow: 4px 4px 20px black;
         box-shadow: $card-shadow;
         gap: 3em;
         width: 100%;
+        min-width: initial;
         @include media(sm, md, lg, xl) {
             width: 30vw;
+            min-width: 400px;
         }
     }
     ul {
@@ -210,34 +206,32 @@ $card-shadow: 4px 4px 20px black;
 }
 
 .header {
+    padding-top: 1em;
     width: 100%;
     @include media(sm, md, lg, xl) {
         width: 600px;
-        height: 400px;
     }
     margin: auto;
     position: relative;
-    /* border: 1px solid blue; */
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
     h1 {
         font-family: 'SF UI Text Heavy';
-        font-weight: 900;
-        font-size: 104px;
+        font-size: 20vw;
+        @include media(sm, md, lg, xl) {
+            font-size: 104px;
+        }
         color: white;
+        
+        /* Center text over cube storm */
+        position: absolute;
         margin: 0;
         padding: 0;
         z-index: 100;
-    }
-    .anim-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -5;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
+
 
 
 </style>

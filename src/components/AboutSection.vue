@@ -80,7 +80,7 @@ section {
     font-size: $font-md;
     line-height: 1.4;
 
-    /* padding: 0 1em; */
+    padding: 0 1em;
     @include media(sm, md, lg, xl) {
         padding: 0;
         max-width: 50%;

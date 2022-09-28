@@ -10,8 +10,11 @@
                 <!--<CubeSVG id="mainCube" />-->
             <!--</div>-->
             <div class="desc-wrapper">
-                <h1>Software Developer.</h1>
-                <p>This is the text that will be occupying the sub-title section. Some more text will justify this.</p>
+                <div class="headers">
+                    <h3>Hi, I'm Chris Pane,</h3>
+                    <h1>Software <br>Developer.</h1>
+                </div>
+                <p>I'm a full-stack web developer and full-time computer science student at NJIT.</p>
             </div>
         </div>
         <div class="render-wrapper">
@@ -119,26 +122,15 @@ export default class App extends Vue {
 /* @import url('https://fonts.cdnfonts.com/css/sf-mono'); */
 /* @import url('https://fonts.cdnfonts.com/css/sf-pro-display'); */
 
-body {
-    font-family: 'SF UI Text Regular';
-    font-weight: 500;
-    color: $fg;
-    font-size: $font-lg;
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-
-    margin: 0; 
-    padding: 0; 
-    background-color: $bg;
-}
-
 $dot-size: 2px;
 $dot-spacing: 12px;
 $dot-first-color: $bg;
 $dot-second-color: #333;
 .render-wrapper {
+    display: none;
+    @include media(sm, md, lg, xl) {
+        display: initial;
+    }
     position: relative;
     &::before {
         content: '';
@@ -162,15 +154,6 @@ $dot-second-color: #333;
     }
 }
 
-/* .screen-wrapper { */
-/*     position: absolute; */
-/*     background-color: red; */
-/*     width: 260px; */
-/*     height: 180px; */
-/*     top: 18.8%; */
-/*     left: 29.5%; */
-/*     transform: rotateX(-17deg) rotateY(45deg); */
-/* } */
 
 .intro-section {
     width: 90%;
@@ -217,11 +200,20 @@ $dot-second-color: #333;
                 line-height: 1.1;
                 margin: 0;
             }
+            .headers {
+                h3 {
+                    margin: 0; 
+                    margin-bottom: 0.5em;
+                    font-family: 'SF UI Text Light';
+                    font-size: $font-lg;
+                    letter-spacing: 1.1px;
+                }
+            }
         }
         h1 {
             font-family: 'Roboto Slab', serif;
             font-weight: 700;
-            font-size: 2.0em;
+            font-size: 14vw;
             @include media(sm, md, lg, xl) {
                 font-size: 5.0em;
             }
@@ -237,13 +229,17 @@ $dot-second-color: #333;
             animation-fill-mode: forwards;
             letter-spacing: 1.1px;
         }
+        h3 {
+            opacity: 0;
+            animation: slide-left .3s ease;
+            animation-delay: 1100ms;
+            animation-fill-mode: forwards;
+        }
         p {
-            /* font-family: 'Quicksand'; */
-            color: $fg;
             font-family: 'SF UI Text Regular';
             font-size: 20px;
             text-align: left;
-            /* letter-spacing: 0.05em; */
+            letter-spacing: 0.025em;
             line-height: 1.6;
             width: 90%;
             margin: 0;
@@ -275,25 +271,5 @@ a {
     }
     transition: color .2s ease;
 }
-
-/* .arrow-wrapper { */
-    /* animation: up-and-down 2s linear infinite; */
-/* } */
-/* $bounce-amount: 6px; */
-/* @keyframes up-and-down { */
-/*     0% { */
-/*         transform: translateY(0px); */
-/*     } */
-/*     25% { */
-/*         transform: translateY(-1 * $bounce-amount); */
-/*     } */
-/*     75% { */
-/*         transform: translateY($bounce-amount); */
-/*     } */
-/*     100% { */
-/*         transform: translateY(0px); */
-/*     } */
-/* } */
-
 
 </style>

@@ -35,13 +35,14 @@ svg {
     transition: color 0.5s ease;
     width: 100vw;
     height: 100vw * 2/3;
-            @include media(sm, md, lg, xl) {
-                width: 600px;
-                height: 400px;
-            }
+    @include media(sm, md, lg, xl) {
+        width: 600px;
+        height: 400px;
+    }
     & > * {
         stroke-width: 0.5;
     }
+    overflow: hidden;
 }
 @keyframes fade-in {
     from { opacity: 0; }
