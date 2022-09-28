@@ -2,7 +2,7 @@
     <section id="portfolio">
 
         <div class="header">
-            <h1>My work.</h1>
+            <h1>My <br>work.</h1>
             <div class="anim-wrapper">
                 <CubestormSVG />
             </div>
@@ -11,8 +11,8 @@
         <div class="main-deck">
             <div :class="['main-card', {'main-card-flipped': i % 2 === 1}]" v-for="(e, i) in main_sellers" :key="i">
                 <div class="image-wrapper"><a :href="e.entry.github"><img :src="e.imgURL"></a></div>
-                <div class="entry-wrapper">
 
+                <div class="entry-wrapper">
                     <div class="upper">
                         <div>
                             <div class="title-line">
@@ -26,11 +26,9 @@
 
                     <ul>
                         <li v-for="(tech, i) in e.entry.technologies" :key="i">{{ tech }}</li>
-                        <!--<li>JavaScript</li>-->
-                        <!--<li>C++</li>-->
                     </ul>
-
                 </div>
+
             </div>
         </div>
 
@@ -66,7 +64,7 @@ export default class PortfolioSection extends Vue {
             {
                 entry: portfolio.find((e) => e.title === 'CG Museum') as PortfolioEntry,
                 shortDesc: '3D GRAPHICS',
-                imgURL: require('@/assets/miniterm.gif'),
+                imgURL: require('@/assets/cgmuseum.png'),
             },
             {
                 entry: portfolio.find((e) => e.title === 'chrispane.dev') as PortfolioEntry,
@@ -89,15 +87,13 @@ $card-shadow: 4px 4px 20px black;
     font-size: $font-md;
 }
 
-section {
-    max-width: 1200px;
-    margin: auto;
-}
-
 .main-deck {
+    width: 80%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     gap: 3em;
+    padding-bottom: 3em;
 }
 
 .main-card {
@@ -109,6 +105,10 @@ section {
     margin: auto;
     padding: 1em 0;
     display: flex;
+    flex-direction: column;
+    @include media(sm, md, lg, xl) {
+        flex-direction: row;
+    }
     justify-content: space-evenly;
     align-items: center;
     text-align: left;
@@ -121,11 +121,17 @@ section {
     }
     .image-wrapper {
         overflow: visible;
-        width: 45%;
+        width: 100%;
         height: 45%;
+        @include media(sm, md, lg, xl) {
+            width: 45%;
+        }
         img {
             box-shadow: $card-shadow;
-            width: 40vw;
+            width: 100%;
+            @include media(sm, md, lg, xl) {
+                width: 40vw;
+            }
         }
     }
     .entry-wrapper {
@@ -137,15 +143,25 @@ section {
         justify-content: space-between;
         box-shadow: $card-shadow;
         gap: 3em;
+        width: 100%;
+        @include media(sm, md, lg, xl) {
+            width: 30vw;
+        }
     }
     ul {
         @include low-text;
         display: flex;
         margin: 0;
         padding: 0;
-        gap: 2em;
+        gap: 1em;
+        @include media(sm, md, lg, xl) {
+            gap: 2em;
+        }
         li {
-            font-size: $font-sm;
+            font-size: $font-xxs;
+            @include media(sm, md, lg, xl) {
+                font-size: $font-sm;
+            }
             list-style-type: none;
         }
     }
@@ -183,15 +199,22 @@ section {
 }
 
 .main-card-flipped {
-    .image-wrapper {
-        direction: rtl;
+    direction: ltr;
+    flex-direction: column;
+    @include media(sm, md, lg, xl) {
+        .image-wrapper {
+            direction: rtl;
+        }
+        flex-direction: row-reverse;
     }
-    flex-direction: row-reverse;
 }
 
 .header {
-    width: 600px;
-    height: 400px;
+    width: 100%;
+    @include media(sm, md, lg, xl) {
+        width: 600px;
+        height: 400px;
+    }
     margin: auto;
     position: relative;
     /* border: 1px solid blue; */
@@ -206,7 +229,7 @@ section {
         color: white;
         margin: 0;
         padding: 0;
-        z-index: 1000;
+        z-index: 100;
     }
     .anim-wrapper {
         position: absolute;

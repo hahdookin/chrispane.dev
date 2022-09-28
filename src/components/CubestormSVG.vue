@@ -6,10 +6,11 @@
 
 <script lang="ts">
 import { Vue } from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
 
 export default class CubestormSVG extends Vue {
-    width = 600;
-    height = 400;
+    width = 300;
+    height = 200;
     viewBox = "0 0 300 200";
     strokeWidth = 0.5;
 }
@@ -31,9 +32,16 @@ svg {
     animation: fade-in 1s ease;
     animation-delay: 1400ms;
     animation-fill-mode: forwards;
-    /* transition: transform 0.5s ease; */
     transition: color 0.5s ease;
-    /* box-shadow: inset 0px 0px 40px 40px red; */
+    width: 100vw;
+    height: 100vw * 2/3;
+            @include media(sm, md, lg, xl) {
+                width: 600px;
+                height: 400px;
+            }
+    & > * {
+        stroke-width: 0.5;
+    }
 }
 @keyframes fade-in {
     from { opacity: 0; }

@@ -35,10 +35,11 @@ export default class AboutSection extends Vue {
 <style lang="scss" scoped>
 
 section {
-    @include media(sm) {
+    width: 90%;
+    @include media(sm, md, lg, xl) {
+        width: 60%;
+        min-width: 900px;
     }
-    width: 60%;
-    min-width: 900px;
     /* margin: auto; */
     @include card-mixin;
     padding: 30px 0;
@@ -55,7 +56,10 @@ section {
 
 .two-column {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
+    @include media(sm, md, lg, xl) {
+        flex-direction: row-reverse;
+    }
     justify-content: center;
     align-items: center;
     gap: 2.5em;
@@ -75,7 +79,12 @@ section {
     font-family: 'SF UI Text Light';
     font-size: $font-md;
     line-height: 1.4;
-    max-width: 50%;
+
+    /* padding: 0 1em; */
+    @include media(sm, md, lg, xl) {
+        padding: 0;
+        max-width: 50%;
+    }
 }
 
 $border-offset-x: 8%;
@@ -87,7 +96,10 @@ $border-offset-y: 5%;
     img {
         position: relative;
         z-index: 100;
-        width: 330px;
+        width: 60vw;
+        @include media(sm, md, lg, xl) {
+            width: 330px;
+        }
         transition: transform .2s $ease-out-back;
         &:hover {
             transform: translate($border-offset-x / 8, $border-offset-y / 8);
@@ -112,9 +124,9 @@ $border-offset-y: 5%;
         @include dotted-background(2px, 12px, $bg2, #333);
         left: -10%;
         top: -10%;
-        width: 90%;
         height: 80%;
         z-index: 10;
+        width: 90%;
     }
 }
 

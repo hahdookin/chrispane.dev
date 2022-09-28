@@ -20,8 +20,14 @@ div {
     /* border: 1px solid cyan; */
     padding: 0;
     margin: 0;
-    width: 660px;
-    height: 550px;
+    width: 200px;
+    height: 150px;
+    opacity: 1;
+    @include media(sm, md, lg, xl) {
+        opacity: 1;
+        width: 660px;
+        height: 550px;
+    }
     position: relative;
 
     transform: scaleX(-1);

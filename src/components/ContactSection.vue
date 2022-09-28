@@ -1,24 +1,11 @@
 <template>
     <section id="contact">
-        <h1>Contact me.</h1>
-        <!--<EnvelopeSVG />-->
-        <form>
-            <div class="first-row">
-                <div class="input-group">
-                    <label for="name">Name</label>
-                    <input id="name" required placeholder="Your name">
-                </div>
-                <div class="input-group">
-                    <label for="email">Email</label>
-                    <input id="email" type="email" required placeholder="Your email">
-                </div>
-            </div>
-            <div class="input-group second-row">
-                <label for="message">Message</label>
-                <textarea rows="3" id="message" required placeholder="Your message"></textarea>
-            </div>
-            <input type="submit">
-        </form>
+        <div class="content">
+            <!--<h1>Lorem ipsum.</h1>-->
+            <!--<h3>Sub-title Lorem Ipsum</h3>-->
+            <p>Feel free to shoot me an email with an opportunity, or just to say hi.</p>
+            <!--<EnvelopeSVG />-->
+        </div>
     </section>
 </template>
 
@@ -37,70 +24,35 @@ export default class ContactSection extends Vue {}
 
 <style lang="scss" scoped>
 
+.content {
+    /* padding: 100px 12rem; */
+    padding: 3em 0;
+    margin: auto;
+    width: 100%;
+    @include media(sm, md, lg, xl) {
+        width: 600px;
+
+    }
+}
+
 section {
     width: 100%;
     margin: auto;
-    padding: 100px 12rem;
     /* margin-top: 60px auto; */
     background-color: #f9f9f9;
     color: $bg;
+    * {
+        margin: 0;
+    }
     h1 {
         margin: 0;
-        margin-bottom: 30px;
         font-family: Merriweather;
         font-weight: 700;
-        font-size: 60px;//104px;
+        font-size: 3em;
     }
-    form {
-        /* border: 1px solid red; */
-        width: 60%;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+    h3 {
+        font-family: 'SF UI Text Light';
     }
-}
-
-.first-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    .input-group {
-        width: 45%;
-    }
-}
-
-/* Consists of a label and an input */
-.input-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    label {
-        font-family: 'SF UI Text Heavy';
-    }
-    input, textarea {
-        background: transparent;
-        border: none;
-        width: 100%;
-        padding: 0.6em;
-        padding-left: 0;
-        border-bottom: 1px solid $bg;
-        &:focus {
-            outline: none;
-             &::placeholder {
-                 color: transparent;
-             }
-        }
-        resize: none;
-    }
-    textarea {
-        height: 4.2em;
-    }
-}
-
-.second-row {
-    width: 100%;
 }
 
 

@@ -6,22 +6,17 @@
     <!-- TODO: Move to a IntroSection.vue -->
     <section class="intro-section">
         <div class="intro-header">
-            <div class="svg-wrapper">
-                <CubeSVG id="mainCube" />
-            </div>
-            <!--<h1>Hi. I'm <span>Chris.</span></h1>-->
+            <!--<div class="svg-wrapper">-->
+                <!--<CubeSVG id="mainCube" />-->
+            <!--</div>-->
             <div class="desc-wrapper">
                 <h1>Software Developer.</h1>
                 <p>This is the text that will be occupying the sub-title section. Some more text will justify this.</p>
             </div>
-            <!--<p>Currently getting a B.S. in Computer Science.</p>-->
         </div>
         <div class="render-wrapper">
             <ComputerRender />
-            <div class="screen-wrapper">
-            </div>
-            <!--<div class="cube-screen-wrapper">-->
-                <!--<CubeSVG />-->
+            <!--<div class="screen-wrapper">-->
             <!--</div>-->
         </div>
     </section>
@@ -139,26 +134,6 @@ body {
     background-color: $bg;
 }
 
-/* nav { */
-/*     display: flex; */
-/*     justify-content: space-between; */
-/*     /1* border: 1px solid red; *1/ */
-/*     margin: 0 5rem; */
-/*     ul { */
-/*         display: flex; */
-/*         flex-direction: row; */
-/*         justify-content: space-between; */
-/*         padding: 0; */
-/*         gap: 4em; */
-/*         li { */
-/*             list-style-type: none; */
-/*             margin: 0; */
-/*             padding: 10px 0; */
-/*         } */
-/*     } */
-/* } */
-
-
 $dot-size: 2px;
 $dot-spacing: 12px;
 $dot-first-color: $bg;
@@ -170,10 +145,16 @@ $dot-second-color: #333;
         position: absolute;
         opacity: 0;
         @include dotted-background(2px, 12px, $bg, $bg3);
-        /* left: -5%; */
-        right: -5%;
-        width: 90%;
-        height: 80%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        @include media(sm, md, lg, xl) {
+            left: initial;
+            right: -5%;
+            width: 90%;
+            height: 80%;
+        }
         z-index: -10;
         animation: slide-left 1s ease;
         animation-delay: 1s;
@@ -194,20 +175,32 @@ $dot-second-color: #333;
 .intro-section {
     width: 90%;
     margin: auto;
-    padding: 60px 0;
+    padding: 30px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    /* border: 1px solid pink; */
+    flex-direction: column-reverse;
+    height: 60vh;
+    @include media(sm, md, lg, xl) {
+        height: initial;
+        padding: 60px 0;
+        flex-direction: row;
+    }
     .intro-header {
-        width: 540px;
-        display: flex;
+        width: 100%;
+        @include media(sm, md, lg, xl) {
+            width: 540px;
+            display: flex;
+        }
         flex-direction: column;
         gap: 1em;
         justify-content: center;
         text-align: left;
-        height: 300px;
+        height: inherit;
+        @include media(sm, md, lg, xl) {
+            height: 300px;
+        }
         & > * {
             margin: 0;
             padding: 0;
@@ -228,7 +221,10 @@ $dot-second-color: #333;
         h1 {
             font-family: 'Roboto Slab', serif;
             font-weight: 700;
-            font-size: 5.0em;
+            font-size: 2.0em;
+            @include media(sm, md, lg, xl) {
+                font-size: 5.0em;
+            }
             /* font-size: 80px; */
             color: $fg;
             /* @include text-color-gradient(linear-gradient(to right, #d5d1bf 40%, #20c4db)); */

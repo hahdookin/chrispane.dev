@@ -54,7 +54,10 @@ export default class FooterSection extends Vue {
 <style lang="scss" scoped>
 
 footer {
-    font-size: $font-md;
+    font-size: $font-sm;
+    @include media(sm, md, lg, xl) {
+        font-size: $font-md;
+    }
     width: 100%;
     margin: auto;
     padding: 100px 0;

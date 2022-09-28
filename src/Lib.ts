@@ -71,7 +71,7 @@ export const portfolio: PortfolioEntry[] = [
         desc: 'Deceptively simple and responsive portfolio SPA website',
         github: `${githubURL}/chirspane.dev`,
         demo: `${baseURL}`,
-        technologies: ['Vue3', 'TypeScript', 'SCSS']
+        technologies: ['Vue3', 'TypeScript', 'SCSS', 'Webpack']
     },
     {
         title: 'Exam Central',

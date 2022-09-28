@@ -6,11 +6,9 @@
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <ul>
-                <li> 
-                    <PopupMenu />
-                </li>
-            </ul>
+            <div class="popup-wrapper">
+                <PopupMenu />
+            </div>
             <!--<div v-show="!mainCubeVisible" style="position: fixed; top: 20px;">-->
                 <!--<CubeSVG />-->
             <!--</div>-->
@@ -39,17 +37,40 @@ export default class NavBar extends Vue {
 </script>
 
 <style scoped lang="scss">
+header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    @include media(sm, md, lg, xl) {
+        /* top: initial; */
+        /* right: 0; */
+        position: static;
+    }
+}
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
     align-items: center;
-    margin: 0 8rem;
-    ul {
-        display: flex;
-        flex-direction: row;
+    margin: 0 1rem;
+    @include media(sm, md, lg, xl) {
         justify-content: space-between;
+        margin: 0 8rem;
+    }
+    .popup-wrapper {
+        padding: 20px 0;
+    }
+    ul {
         padding: 0;
-        gap: 4em;
+        display: none;
+        @include media(sm, md, lg, xl) {
+            display: flex;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 4em;
+        }
         li {
             list-style-type: none;
             margin: 0;

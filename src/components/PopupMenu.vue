@@ -74,25 +74,40 @@ export default class PopupMenu extends Vue {
     z-index: 1000;
 
     /* Icon or menu is hovered */
-    &:hover {
-        .popup-menu  {
-            visibility: visible;
-            opacity: 1;
-            transform: scale(1);
-        }
-        .bar1, .bar3 {
-            transform: scale(0); 
-        }
-        .bar2 {
-            height: 100%;
-            border-radius: 100px;
-            transform: scaleX(.75);
+    /* If the device supports hover, allow hover to show the menu */
+    @media (hover: hover) {
+        &:hover {
+            .popup-menu  {
+                visibility: visible;
+                opacity: 1;
+                transform: scale(1);
+            }
+            .bar1, .bar3 {
+                transform: scale(0); 
+            }
+            .bar2 {
+                height: 100%;
+                border-radius: 100px;
+                transform: scaleX(.75);
+            }
         }
     }
 }
 .popup-menu {
     position: absolute;
-    width: 14em;
+    width: 70vw;
+    height: 60vh;
+    font-size: $font-xl;
+
+    box-shadow: 4px 2px 20px #000;
+
+
+    @include media(sm, md, lg, xl) {
+        width: 14em;
+        height: initial;
+        font-size: $font-md;
+        justify-content: revert;
+    }
     right: -10%;
     top: -10%;
     transform: scale(0.9);
@@ -101,9 +116,9 @@ export default class PopupMenu extends Vue {
     display: flex;
     flex-direction: column;
     align-items: start;
-    font-size: $font-md;
     gap: 3.0em;
     padding: 2.5em 1.5em;
+    /* justify-content: space-between; */
 
     opacity: 0;
     visibility: hidden;
