@@ -1,20 +1,31 @@
 <template>
-    <LinkIcons />
+    <!--<LinkIcons />-->
+    <div class="splash">
+        <ComputerRender />
+        <div>
+            <h1>Hi. I'm Chris.</h1>
+        </div>
+    </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import HomeAnim from '@/components/HomeAnim.vue';
-import LinkIcons from '@/components/LinkIcons.vue';
+import ComputerRender from '@/components/ComputerRender.vue';
 
 @Options({
     components: {
-        HomeAnim,
-        LinkIcons
+        ComputerRender
     },
 })
 export default class HomeView extends Vue {}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+h1 {
+    font-family: serif;
+}
+.splash {
+    display: flex;
+    justify-content: space-evenly;
+}
 </style>

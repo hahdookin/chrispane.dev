@@ -1,0 +1,131 @@
+@import "globals";
+@import "sf-ui";
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+
+
+@mixin underline-link($color, $hover_color, $hover_underline_color: $hover_color) {}
+
+// Mixin for links that get an underline transition when hovered
+@mixin inline-link {
+    display: inline-block;
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        height: 10%;
+        opacity: 0.5;
+        background-color: $comp-blue;
+        transition: height .2s $ease-out-back;
+    }
+    &:hover {
+        &::before {
+            height: 40%;
+        }
+    }
+}
+
+@mixin keyframes($name) {
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+// Mixin to create a "slide-up fade-in" animation
+// Params:
+//   $y: Starting y position of before the slide-in
+@mixin slide-up-anim($name, $y) {
+    @include keyframes($name) {
+        from { opacity: 0; transform: translateY($y); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+}
+@mixin slide-side-anim($name, $x) {
+    @include keyframes($name) {
+        from { opacity: 0; transform: translateX($x); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+}
+
+@mixin font-setup($family, $weight: normal, $fallback: sans-serif) {
+    font-family: $family, $fallback;
+    font-style: normal;
+    font-weight: $weight;
+}
+
+// @include font-setup(Merriweather, 700);
+
+@mixin text-color-gradient($grad) {
+    background: $grad;
+    background-clip: text;
+    color: transparent;
+}
+
+@mixin card-mixin {
+    background-color: $bg2;
+    border-radius: 14px;
+}
+
+@mixin dotted-background($size, $spacing, $color1, $color2) {
+    position: absolute;
+    background: repeating-linear-gradient(0deg, transparent, transparent $size, $color1 $size, $color1 $spacing), repeating-linear-gradient(-90deg, $color2, $color2 $size, $color1 $size, $color1 $spacing);
+
+}
+
+// Width
+::-webkit-scrollbar {
+    width: 0px;
+    @include media(sm, md, lg, xl) {
+        width: 10px;
+    }
+}
+
+// Allows transparent scollbar
+body { overflow: overlay; }
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $bg3;
+    border-radius: 20px;
+    // &:hover {
+    //     background: grey;
+    // }
+    // &:active {
+    //     background: lightgrey;
+    // }
+    transition: background .2s ease;
+}
+
+body {
+    font-family: 'SF UI Text Regular';
+    font-weight: 500;
+    color: $fg;
+    font-size: $font-lg;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+
+    margin: 0; 
+    padding: 0; 
+    background-color: $bg;
+}
+
+a {
+    text-decoration: none;
+    color: $fg;
+
+    &:visited { text-decoration: none; }
+    &:selected { text-decoration: none; }
+    &:hover {
+        color: $comp-blue;
+    }
+    transition: color .2s ease;
+}

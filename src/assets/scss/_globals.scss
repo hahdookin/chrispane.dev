@@ -15,18 +15,24 @@ $font-header: 48px;
 // $card-bg: #ddd;
 // $link-color: #777;
 
-$bg: hwb(233deg 11% 78%);
-$content-bg: hwb(233deg 6% 85%);
-$fg: hwb(237deg 81% 9%);
-$sub-fg: hwb(237deg 44% 36%);
-$special-fg: orange;
+// $fg: #d1d1d1;
+$fg: #d1d1d1;
+// $bg: #1d1d20;
+$bg: #1b1b1b;
+$bg2: #111;
+$bg3: #333;
+$comp-beige: #d5d1bf;
+$comp-blue: #20c4db;
+$sub-fg: red;
+$special-fg: #20c4db;
 $link-color: $sub-fg;
 $link-hover-color: $fg;
 $card-bg: $bg;
 
+$ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+
 // Breakpoints
 $breakpoints: (
-    xs: 0px,
     sm: 576px,
     md: 768px,
     lg: 992px,
@@ -42,3 +48,9 @@ $breakpoints: (
         }
     }
 }
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
