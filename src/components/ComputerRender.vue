@@ -16,6 +16,8 @@ export default class ComputerRender extends Vue {}
 </script>
 
 <style scoped lang="scss">
+$image-aspect-ratio: 5.5/6.6;
+
 div {
     /* border: 1px solid cyan; */
     padding: 0;
@@ -23,7 +25,11 @@ div {
     width: 200px;
     height: 150px;
     opacity: 1;
-    @include media(sm, md, lg, xl) {
+    @include media(sm, md, lg) {
+        width: 40vw;
+        height: 40vw * $image-aspect-ratio;
+    }
+    @include media(xl) {
         opacity: 1;
         width: 660px;
         height: 550px;

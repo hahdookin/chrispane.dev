@@ -50,7 +50,12 @@ nav {
     justify-content: right;
     align-items: center;
     margin: 0 1rem;
-    @include media(sm, md, lg, xl) {
+    @include media(sm, md) {
+        justify-content: space-between;
+        margin: 0 3rem;
+    }
+    /* @include media(sm, md, lg, xl) { */
+    @include media(lg, xl) {
         justify-content: space-between;
         margin: 0 8rem;
     }

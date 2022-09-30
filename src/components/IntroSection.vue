@@ -83,12 +83,20 @@ $dot-second-color: #333;
     justify-content: center;
     align-items: center;
     gap: 20px;
+    gap: 0px;
     flex-direction: column-reverse;
     height: 60vh;
-    @include media(sm, md, lg, xl) {
+    @include media(sm, md, lg) {
+        gap: 0px;
         height: initial;
         padding: 60px 0;
         flex-direction: row;
+    }
+    @include media(xl) {
+        height: initial;
+        padding: 60px 0;
+        flex-direction: row;
+        gap: 20px;
     }
     .intro-header {
         width: 100%;
@@ -134,7 +142,11 @@ $dot-second-color: #333;
             font-family: 'Roboto Slab', serif;
             font-weight: 700;
             font-size: 14vw;
-            @include media(sm, md, lg, xl) {
+            @include media(sm, md, lg) {
+                font-size: 6vw;
+            }
+            /* @include media(sm, md, lg, xl) { */
+            @include media(xl) {
                 font-size: 5.0em;
             }
             /* font-size: 80px; */

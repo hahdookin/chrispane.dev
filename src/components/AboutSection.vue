@@ -40,7 +40,11 @@ a {
 
 section {
     width: 90%;
-    @include media(sm, md, lg, xl) {
+    @include media(sm, md, lg) {
+
+    }
+    /* @include media(sm, md, lg, xl) { */
+    @include media(xl) {
         width: 60%;
         min-width: 900px;
     }
@@ -101,7 +105,11 @@ $border-offset-y: 5%;
         position: relative;
         z-index: 100;
         width: 60vw;
-        @include media(sm, md, lg, xl) {
+        @include media(sm, md) {
+            width: 40vw;
+        }
+        /* @include media(sm, md, lg, xl) { */
+        @include media(lg, xl) {
             width: 330px;
         }
         transition: transform .2s $ease-out-back;
