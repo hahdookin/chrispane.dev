@@ -18,7 +18,7 @@
 
 @Options({})
 export default class AboutSection extends Vue {
-    vimrc_url = "https://github.com/hahdookin/ArchConfigs/blob/main/nvim/init.vim";
+    vimrc_url = "https://github.com/hahdookin/VimConfig";
     mounted() {
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
