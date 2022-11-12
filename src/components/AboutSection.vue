@@ -7,7 +7,7 @@
             <div class="desc-wrapper">
                 <h1>Hi there.</h1>
                 <p>I began programming in the Fall of 2019 and instantly fell in love. Since then, I've been always trying to get better and learn new technologies.</p>
-                <p>Currently, I'm a software engineer specializing in full-stack development. While studying computer full-time at NJIT, I am working as a software engineer at iES MACH.</p>
+                <p>Currently, I'm a software engineer specializing in full-stack development. While studying computer science full-time at NJIT, I am working as a software engineer at iES MACH.</p>
                 <p>My current interests are full-stack web-dev, game-dev, UI/UX, 3D modelling, and computer graphics. But I'm usually just tweaking my <a target="_blank" :href="vimrc_url">vimrc</a>.</p>
             </div>
         </div>
