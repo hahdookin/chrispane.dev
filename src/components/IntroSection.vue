@@ -6,7 +6,7 @@
                     <h3>Hi, I'm Chris Pane,</h3>
                     <h1>Software <br>Developer.</h1>
                 </div>
-                <p>I'm a full-stack web <a target="_blank" :href="github">developer</a> and full-time computer science student at NJIT.</p>
+                <p>I'm a full-stack developer @ <a target="_blank" :href="iesmach">iES MACH</a> and full-time student @ <a target="_blank" :href="njit">NJIT</a>.</p>
             </div>
         </div>
         <div class="render-wrapper">
@@ -32,6 +32,8 @@ import { socials } from '@/Lib';
 export default class App extends Vue {
     curRoute = "";
     github = socials.github;
+    iesmach = "https://wellstat.io";
+    njit = "https://njit.edu";
     mainCubeVisible = false;
 }
 </script>
