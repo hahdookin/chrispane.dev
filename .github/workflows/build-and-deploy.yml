@@ -1,0 +1,32 @@
+name: Build and Deploy
+run-name: ${{ github.actor }} is building and deploying.
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2.4.0
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: 'placeholder'
+
+      - name: Adding Known Hosts
+        run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@master
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "mkdir /var/www/chrispaneBU"
+      - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "rm -rf /var/www/chrispaneBU/*"
+      - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cp /var/www/chrispane/* /var/www/chrispaneBU/"
+      - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "rm -rf /var/www/chrispane/*"
+      - run: scp -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/chrispane
