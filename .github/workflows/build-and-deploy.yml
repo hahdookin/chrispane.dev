@@ -27,6 +27,6 @@ jobs:
 
       - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "mkdir /var/www/chrispaneBU"
       - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "rm -rf /var/www/chrispaneBU/*"
-      - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cp /var/www/chrispane/* /var/www/chrispaneBU/"
+      - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cp -r /var/www/chrispane/* /var/www/chrispaneBU/"
       - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "rm -rf /var/www/chrispane/*"
       - run: scp -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/chrispane
