@@ -25,7 +25,7 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "mkdir /var/www/chrispaneBU"
+      - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "mkdir -p /var/www/chrispaneBU"
       - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "rm -rf /var/www/chrispaneBU/*"
       - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cp -r /var/www/chrispane/* /var/www/chrispaneBU/"
       - run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "rm -rf /var/www/chrispane/*"
