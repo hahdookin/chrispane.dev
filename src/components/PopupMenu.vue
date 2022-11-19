@@ -16,7 +16,7 @@
             <div class="column">
                 <span class="column-title">Links/</span>
                 <a target="_blank" :href="socials['linkedin']">LinkedIn</a>
-                <a target="_blank" :href="socials['github']">Github</a>
+                <a target="_blank" :href="socials['github']">GitHub</a>
                 <a target="_blank" :href="socials['twitter']">Twitter</a>
             </div>
         </div>
