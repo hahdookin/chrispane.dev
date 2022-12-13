@@ -139,6 +139,7 @@ $card-shadow: 4px 4px 20px black;
         gap: 3em;
         width: 100%;
         min-width: initial;
+        z-index: 100;
         @include media(sm, md, lg, xl) {
             width: 30vw;
             min-width: 400px;
