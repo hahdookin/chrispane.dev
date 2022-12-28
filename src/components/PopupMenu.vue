@@ -11,6 +11,7 @@
             <div class="column">
                 <span class="column-title">Docs/</span>
                 <a target="_blank" :href="`${publicPath}Christopher_Pane_Resume.pdf`">Resume</a>
+                <a target="_blank" href="/blog">Blog</a>
             </div>
 
             <div class="column">
