@@ -18,6 +18,7 @@
                         <li>
                             <a target="_blank" :href="`${publicPath}Christopher_Pane_Resume.pdf`">Resume</a>
                         </li>
+                        <li><a target="_blank" href="/blog">Blog</a></li>
                     </ul>
                 </div>
             </div>
