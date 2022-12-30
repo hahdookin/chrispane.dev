@@ -6,7 +6,7 @@
                     <h3>Hi, I'm Chris Pane,</h3>
                     <h1>Software <br>Developer.</h1>
                 </div>
-                <p>I'm a full-stack developer @ <a target="_blank" :href="iesmach">iES MACH</a> and full-time student @ <a target="_blank" :href="njit">NJIT</a>.</p>
+                <p>I'm a full-stack developer @ <a target="_blank" :href="iesmach">iES MACH</a> and sometimes I <a target="_blank" href="/blog">write</a>, too.</p>
             </div>
         </div>
         <div class="render-wrapper">
