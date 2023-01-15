@@ -24,7 +24,7 @@
             </div>
 
             <div class="lower">
-                <span>Christoper Pane</span>
+                <span>Christopher Pane</span>
                 <ul>
                     <li><a target="_blank" :href="socials['github']"><font-awesome-icon :icon="['fab', 'github']" /></a></li>
                     <li><a target="_blank" :href="socials['linkedin']"><font-awesome-icon :icon="['fab', 'linkedin']" /></a></li>
