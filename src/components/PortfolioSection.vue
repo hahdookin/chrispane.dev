@@ -65,9 +65,9 @@ export default class PortfolioSection extends Vue {
                 imgURL: require('@/assets/img/portfolio/cgmuseum.png'),
             },
             {
-                entry: portfolio.find((e) => e.title === 'JESS REPL') as PortfolioEntry,
+                entry: portfolio.find((e) => e.title === 'Browser REPL') as PortfolioEntry,
                 genre: 'WEB DEVELOPMENT',
-                imgURL: require('@/assets/img/portfolio/jessrepl.png'),
+                imgURL: require('@/assets/img/portfolio/browser_repl.gif'),
             },
         ];
     }
