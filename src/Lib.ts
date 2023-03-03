@@ -46,7 +46,7 @@ export const portfolio: PortfolioEntry[] = [
         technologies: ['Vim9script']
     },
     {
-        title: 'JESS REPL',
+        title: 'Browser REPL',
         desc: 'Recursive descent parser and feature-rich REPL in the browser',
         github: `${githubURL}/hahdookin.github.io`,
         demo: `${baseURL}/jess`,
